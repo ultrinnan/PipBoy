@@ -1,11 +1,16 @@
-# Pip-Boy
-Your personal Pip-Boy for your PC.
+# Pip-Boy 3018
 
-For credits to the contributers, more information, etc; visit the official website.
-http://nightly.pw/pipboy/
+Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).
 
-| Platform | Download |
-|----------------------|------------------------------------------|
-| Windows, Linux, etc. | https://github.com/Nightlyy/PipBoy |
-| iOS | https://github.com/OliNightly/PipBoy-iOS |
-| Android | https://github.com/OliNightly/PipBoy-Android |
+Designed for 5 inch touch screen (800 x 480 px).
+
+Initially idea is to have Pip-Boy software on Raspberry Pi with some general information available in original game (Fallout 3/4/etc.).
+
+MVP functionality should consist of:
+- initial loading screen with video
+- tabs with static general info about common character
+- Radio tab with possibility to play music
+- etc.
+    
+#
+Based on https://github.com/Nightlyy/PipBoy repository.

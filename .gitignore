@@ -1,0 +1,30 @@
+# phpstorm project files
+.idea
+
+#SSL certificates folder
+.well-known
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# Mac DS_Store Files
+.DS_Store
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+# vagrant runtime
+/.vagrant
+/composer.lock
+
+/.htaccess
+/node_modules/
+/.sass-cache/
