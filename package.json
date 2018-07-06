@@ -1,0 +1,37 @@
+{
+  "name": "Pip_Boy_3018",
+  "description": "Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ultrinnan/PipBoy.git"
+  },
+  "keywords": [
+    "fedirko.pro",
+    "pipboy",
+    "pip-boy",
+    "fallout"
+  ],
+  "author": "Serhii Fedirko",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ultrinnan/fedirko.pro/issues"
+  },
+  "homepage": "pipboy.fedirko.pro",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-ruby-sass": "^3.0.0",
+    "minimatch": "^3.0.4"
+  },
+  "devDependencies": {
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0"
+  }
+}
