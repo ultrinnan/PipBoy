@@ -18,7 +18,7 @@
     <meta property='og:description' content='Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).' />
     <meta property='og:type' content='article' />
     <meta property='og:image' content='/images/VaultBoy.png' />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="/images/gear.png" type="image/x-icon" />
 
     <link rel="stylesheet" type="text/css" href="css/main.min.css?t=<?=time();?>"/>
 </head>
@@ -34,12 +34,38 @@
 <!--            Your browser does not support HTML5 video.-->
 <!--        </video>-->
         <div class="content">
+            <div class="screen-reflection"></div>
+            <div class="scan"></div>
+            <div class="nav">
+                <div class="nav_el" data-nav="0">
+                    <div class="text setup"></div>
+                </div>
+                <div class="nav_el active" data-nav="1">
+                    <div class="text">STAT</div>
+                </div>
+                <div class="nav_el" data-nav="2">
+                    <div class="text">INV</div>
+                </div>
+                <div class="nav_el" data-nav="3">
+                    <div class="text">DATA</div>
+                </div>
+                <div class="nav_el" data-nav="4">
+                    <div class="text">MAP</div>
+                </div>
+                <div class="nav_el" data-nav="5">
+                    <div class="text">RADIO</div>
+                </div>
+            </div>
 
-            <div class="screen">
-                <div class="screen-reflection"></div>
-                <div class="scan"></div>
-                <nav><span class="active stat"></span><span class="inv"></span><span class="data"></span><a href="map.html"><span class="map"></span></a><a href="radio.html"><span class="radio"></span></a><p><span class="status"></span><span class="off special"></span></p>
-                </nav>
+            <div class="screen" data-screen="0">
+                some settings will be here
+            </div>
+
+            <div class="screen active" data-screen="1">
+                <p>
+                    <span class="status"></span>
+                    <span class="off special"></span>
+                </p>
                 <div class="vaultboy">
                     <div class="bar1"></div>
                     <div class="bar2"></div>
@@ -65,48 +91,50 @@
                 </div>
             </div>
 
-            <div class="screen">
-                <div class="screen-reflection"></div>
-                <div class="scan"></div>
-                <nav><span class="active stat"></span><span class="inv"></span><span class="data"></span><a href="map.html"><span class="map"></span></a><a href="radio.html"><span class="radio"></span></a><p><span class="status"></span><span class="off special"></span></p>
-                    <br><br><br><div style="color:#000000;" style="float:center">
-                        <br>
-                        <div class="center">
-                            <p style="color:#8df776;">THIS PAGE IS COMING SOON!</p>
-                            <p class="map"><img src="images/VaultBoy.png" width="50px" height="73px" frameborder="0" style="border:0" allowfullscreen=""></iframe></p>
+            <div class="screen" data-screen="2">
+                <p style="color:#8df776;">THIS PAGE IS COMING SOON!</p>
+                <p class="map">
+                    <img src="images/VaultBoy.png" width="50px" height="73px" frameborder="0" style="border:0" allowfullscreen="">
+                </p>
+            </div>
+
+            <div class="screen" data-screen="3">
+<!--                        <p class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9564.440201391753!2d-4.0706345!3d53.1800057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39a1973ef2f59%3A0x2b14a49773617857!2sVault+111!5e0!3m2!1sen!2suk!4v1511631062944" width="200" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe></p>-->
+            </div>
+
+            <div class="screen" data-screen="4">
+                some data here
+            </div>
+
+            <div class="screen radio" data-screen="5">
+                <div class="list">
+                    <p style="color:#003C00"> Classical Radio</p>
+                    <p style="color:#003C00"> Trinity Tower Radio</p>
+                    <p style="color:#003C00"> Military Frequency AF95</p>
+                </div>
+                <div class="player">
+                    <div class="controlls">
+<!--                        <div class="controll shuffle"></div>-->
+                        <div class="controll prev"></div>
+                        <div class="controll play"></div>
+                        <div class="controll pause"></div>
+                        <div class="controll next"></div>
+<!--                        <div class="controll repeat"></div>-->
+                    </div>
+                    <div class="controlls">
+                        <div class="controll mute"></div>
+                        <div class="volume">
+                            <input type="range" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
                         </div>
-                </nav>
-
-            </div>
-
-            <div class="screen">
-                <div class="screen-reflection"></div>
-                <div class="scan"></div>
-                <nav><span class="stat"></span><span class="inv"></span><span class="data"></span><span class="active map"></span><span class="radio"></span>
-                    <br><br><br><div style="color:#000000;" style="float:center">
-                        <br>
-                        <p class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9564.440201391753!2d-4.0706345!3d53.1800057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39a1973ef2f59%3A0x2b14a49773617857!2sVault+111!5e0!3m2!1sen!2suk!4v1511631062944" width="200" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe></p>
-                    </div>
-
-
-                </nav>
-            </div>
-
-            <div class="screen">
-                <div class="scan"></div>
-                <nav><span class="stat"></span><span class="inv"></span><span class="data"></span><span class="map"></span><span class="active radio"></span>
-                    <br><br><br><div style="color:#8df776;" style="float:left"><img src="/images/radiowaves.gif" style="float:right;padding-right: 5px;" width="33%" length="33%">
-                        <a class="green" href="http://nightly.pw/pipboy/DiamondCityRadio.mp3" target="_blank"><p>� Diamond City Radio</p></a>
-                        <p style="color:#003C00"> Classical Radio</p>
-                        <p style="color:#003C00"> Trinity Tower Radio</p>
-                        <p style="color:#003C00"> Military Frequency AF95</p>
 
                     </div>
-
-
-                </nav>
-
-                <embed src="http://nightly.pw/pipboy/DiamondCityRadio.mp3" autostart="true" loop="true" width="2" height="100px">
+                    <div class="container">
+                        <audio controls id="audio_player">
+                            <source src="/music/fallout3_station/world-on-fire.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
             </div>
 
         </div>
