@@ -30,10 +30,10 @@
     </div>
 
     <div class="main">
-<!--        <video poster="/images/standby.jpg" autoplay id="video">-->
-<!--            <source src="/startup.mp4" type="video/mp4">-->
-<!--            Your browser does not support HTML5 video.-->
-<!--        </video>-->
+        <video poster="/images/standby.jpg" autoplay id="video">
+            <source src="/startup.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
         <div class="content">
             <div class="screen-reflection"></div>
             <div class="scan"></div>
@@ -41,7 +41,7 @@
                 <div class="nav_el" data-nav="0">
                     <div class="text setup"></div>
                 </div>
-                <div class="nav_el" data-nav="1">
+                <div class="nav_el active" data-nav="1">
                     <div class="text">STAT</div>
                 </div>
                 <div class="nav_el" data-nav="2">
@@ -53,7 +53,7 @@
                 <div class="nav_el" data-nav="4">
                     <div class="text">MAP</div>
                 </div>
-                <div class="nav_el active" data-nav="5">
+                <div class="nav_el" data-nav="5">
                     <div class="text">RADIO</div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 some settings will be here
             </div>
 
-            <div class="screen" data-screen="1">
+            <div class="screen active" data-screen="1">
                 <p>
                     <span class="status"></span>
                     <span class="off special"></span>
@@ -107,7 +107,7 @@
                 some data here
             </div>
 
-            <div class="screen radio active" data-screen="5">
+            <div class="screen radio" data-screen="5">
                 <div class="list">
                     <div class="wave" data-wave="1">Radio</div>
                     <div class="wave current" data-wave="2">Fallout 3 Radio</div>
@@ -152,6 +152,6 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/main.js?t=<?=time();?>"></script>
+<script src="js/main.min.js?t=<?=time();?>"></script>
 </body>
 </html>

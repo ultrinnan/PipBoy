@@ -35,7 +35,12 @@ a{
   height: 480px;
   overflow: hidden;
 
+  video{
+    width: 800px;
+  }
+
   .content {
+    display: none;
     position: relative;
 
     .screen-reflection {

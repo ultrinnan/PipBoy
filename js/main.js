@@ -126,6 +126,8 @@ function setVolume(volume) {
 
 $(document).ready(function(){
 
+    playVideo();
+
     $(".music_list").mCustomScrollbar();
 
     var prev = $('.prev');
