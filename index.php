@@ -20,6 +20,7 @@
     <meta property='og:image' content='/images/VaultBoy.png' />
     <link rel="icon" href="/images/gear.png" type="image/x-icon" />
 
+    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.min.css?t=<?=time();?>"/>
 </head>
 <body>
@@ -40,7 +41,7 @@
                 <div class="nav_el" data-nav="0">
                     <div class="text setup"></div>
                 </div>
-                <div class="nav_el active" data-nav="1">
+                <div class="nav_el" data-nav="1">
                     <div class="text">STAT</div>
                 </div>
                 <div class="nav_el" data-nav="2">
@@ -52,7 +53,7 @@
                 <div class="nav_el" data-nav="4">
                     <div class="text">MAP</div>
                 </div>
-                <div class="nav_el" data-nav="5">
+                <div class="nav_el active" data-nav="5">
                     <div class="text">RADIO</div>
                 </div>
             </div>
@@ -61,7 +62,7 @@
                 some settings will be here
             </div>
 
-            <div class="screen active" data-screen="1">
+            <div class="screen" data-screen="1">
                 <p>
                     <span class="status"></span>
                     <span class="off special"></span>
@@ -106,20 +107,24 @@
                 some data here
             </div>
 
-            <div class="screen radio" data-screen="5">
+            <div class="screen radio active" data-screen="5">
                 <div class="list">
-                    <p style="color:#003C00"> Classical Radio</p>
-                    <p style="color:#003C00"> Trinity Tower Radio</p>
-                    <p style="color:#003C00"> Military Frequency AF95</p>
+                    <div class="wave" data-wave="1">Radio</div>
+                    <div class="wave current" data-wave="2">Fallout 3 Radio</div>
+                    <div class="wave" data-wave="3">Fallout 4 Radio</div>
+                    <div class="wave" data-wave="4">My Music</div>
+                    <div class="list_title">Playlist</div>
+                    <div class="music_list">
+                        <div class="wrapper"></div>
+                    </div>
                 </div>
-                <div class="player">
+                <div class="player" data-wave="2" data-track="0">
                     <div class="controlls">
-<!--                        <div class="controll shuffle"></div>-->
+                        <div class="controll shuffle"></div>
                         <div class="controll prev"></div>
                         <div class="controll play"></div>
-                        <div class="controll pause"></div>
                         <div class="controll next"></div>
-<!--                        <div class="controll repeat"></div>-->
+                        <div class="controll repeat"></div>
                     </div>
                     <div class="controlls">
                         <div class="controll mute"></div>
@@ -130,7 +135,7 @@
                     </div>
                     <div class="container">
                         <audio controls id="audio_player">
-                            <source src="/music/fallout3_station/world-on-fire.mp3" type="audio/mpeg">
+                            <source id="src" src="music/fallout3_station/!world-on-fire.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
                     </div>
@@ -146,6 +151,7 @@
     </footer>
 
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/main.min.js?t=<?=time();?>"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/main.js?t=<?=time();?>"></script>
 </body>
 </html>

@@ -42,9 +42,8 @@ a{
       position: absolute;
       width: 800px;
       height: 480px;
-      background: linear-gradient(150deg, #fff, rgba(0, 0, 0, 0));
-      background: red; /* For browsers that do not support gradients */
-      background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+      background: #fff; /* For browsers that do not support gradients */
+      background: linear-gradient(150deg, #fff, rgba(255,0,0,0));
       z-index: 99;
       opacity: 0.07;
       pointer-events: none;
@@ -137,7 +136,7 @@ a{
       width: 600px;
       height: 480px;
       margin: auto;
-      padding: 56px 8px 8px;
+      padding: 56px 16px 16px;
       box-sizing: border-box;
       &.active{
         display: block;
@@ -151,6 +150,68 @@ a{
     width: 50%;
     float: left;
 
+    .wave{
+      font-size: 20px;
+      margin: 8px 0;
+      padding: 0 0 0 24px;
+      position: relative;
+      opacity: 0.75;
+      cursor: pointer;
+      &:before{
+        position: absolute;
+        left: 0;
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url("/images/icons/play-button.png") center no-repeat;
+        background-size: contain;
+      }
+      &.current{
+        opacity: 1;
+        color: $light_green;
+      }
+      &.active{
+        &:before{
+          background: url("/images/icons/pause.png") center no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+
+    .list_title{
+      background: #000;
+      text-align: center;
+      width: 64px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+      top: 8px;
+    }
+    .mCSB_inside>.mCSB_container{
+      margin-right: 16px;
+    }
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+      background: green;
+    }
+    .music_list{
+      position: relative;
+      border: 1px solid green;
+      margin: 0 8px 0 0;
+      padding: 8px 0 4px 4px;
+      height: 250px;
+      overflow: hidden;
+      .track{
+        list-style: none;
+        opacity: 0.75;
+        margin-bottom: 4px;
+        &.current{
+          opacity: 1;
+          color: $light_green;
+        }
+      }
+
+    }
   }
   #audio_player{
     display: none;
@@ -173,6 +234,9 @@ a{
       &.shuffle{
         background: url("/images/icons/shuffle.png") center no-repeat;
         background-size: contain;
+        &.off{
+          opacity: 0.5;
+        }
       }
       &.prev{
         background: url("/images/icons/back.png") center no-repeat;
@@ -181,11 +245,10 @@ a{
       &.play{
         background: url("/images/icons/play-button.png") center no-repeat;
         background-size: contain;
-      }
-      &.pause{
-        background: url("/images/icons/pause.png") center no-repeat;
-        background-size: contain;
-        display: none;
+        &.active{
+          background: url("/images/icons/pause.png") center no-repeat;
+          background-size: contain;
+        }
       }
       &.next{
         background: url("/images/icons/next.png") center no-repeat;
@@ -194,6 +257,9 @@ a{
       &.repeat{
         background: url("/images/icons/replay.png") center no-repeat;
         background-size: contain;
+        &.off{
+          opacity: 0.5;
+        }
       }
       &.mute{
         background: url("/images/icons/mute.png") center no-repeat;
@@ -340,56 +406,6 @@ a{
   border-bottom-right-radius: 90px;
   border-top: 2px solid #c3bfb4;
   position: relative;
-}
-
-.tune-wheel {
-  width: 60px;
-  height: 60px;
-  background: #000;
-  transform: rotate(45deg);
-  border-radius: 8px;
-  border-top: 2px solid #999;
-  border-left: 2px solid #999;
-  z-index: 0;
-  position: absolute;
-  top: 240px;
-  right: 12px;
-  &:before {
-    width: 27px;
-    height: 27px;
-    background: #000;
-    content: "";
-    display: block;
-    border-radius: 150px;
-    position: absolute;
-    top: 0;
-    z-index: 99;
-    top: 17px;
-    left: 17px;
-    box-shadow: 0px 0px 25px #252525;
-    border-bottom: 1px solid #999;
-    transform: rotate(-45deg);
-  }
-  &:after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 60px;
-    background: #000;
-    border-radius: 8px;
-    transform: rotate(45deg);
-  }
-  .analog {
-    width: 15px;
-    height: 15px;
-    background: #000;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 99;
-    border-radius: 150px;
-    border: 3px solid #151515;
-  }
 }
 
 .rads {
