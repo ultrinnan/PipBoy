@@ -9,6 +9,7 @@ Initially idea is to have Pip-Boy software on Raspberry Pi with some general inf
 MVP functionality should consist of:
 - initial loading screen with video
 - tabs with static general info about common character
+- fallout styled google map
 - Radio tab with possibility to play music
 - etc.
     

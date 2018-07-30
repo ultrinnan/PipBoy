@@ -34,7 +34,7 @@
             <source src="/startup.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
-        <div class="content">
+        <div class="content" style="display: block">
             <div class="screen-reflection"></div>
             <div class="scan"></div>
             <div class="nav">
@@ -59,52 +59,57 @@
             </div>
 
             <div class="screen" data-screen="0">
-                some settings will be here
+                <div class="header">Page COMING SOON! Please stand by...</div>
+                <div class="boy_thumb"></div>
             </div>
 
             <div class="screen active" data-screen="1">
-                <p>
-                    <span class="status"></span>
-                    <span class="off special"></span>
-                </p>
-                <div class="vaultboy">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                    <div class="bar4"></div>
-                    <div class="bar5"></div>
-                    <div class="bar6"></div>
+                <div class="stat_nav">
+                    <span class="stat active">Status</span>
+<!--                    <span class="stat">Special</span>-->
                 </div>
-                <div class="supplies"><span>Stimpak (0)</span><span>Radaway (0)</span><span>Stix</span>
-                </div>
-                <div class="info-bar">
-                    <span class="weapon"></span>
-                    <span class="aim"><p>21</p></span>
-                    <span class="helmet"></span>
-                    <span class="shield"><p>110</p></span>
-                    <span class="voltage"><p>126</p></span>
-                    <span class="nuclear"><p>35</p></span>
-                </div>
-                <div class="hud-bar">
-                    <div class="hp"></div>
-                    <div class="exp"></div>
-                    <div class="ap"></div>
+                <div class="stat">
+                    <div class="vaultboy">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                        <div class="bar4"></div>
+                        <div class="bar5"></div>
+                        <div class="bar6"></div>
+                    </div>
+                    <div class="info-bar">
+                        <span class="weapon"></span>
+                        <span class="aim"><p>13</p></span>
+                        <span class="helmet"></span>
+                        <span class="shield"><p>16</p></span>
+                        <span class="voltage"><p>7</p></span>
+                        <span class="nuclear"><p>15</p></span>
+                    </div>
+                    <div class="supplies">
+                        <span>Stimpak (0)</span>
+                        <span>Radaway (0)</span>
+                    </div>
+                    <div class="hud-bar">
+                        <div class="hp"></div>
+                        <div class="exp"></div>
+                        <div class="ap"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="screen" data-screen="2">
-                <p style="color:#8df776;">THIS PAGE IS COMING SOON!</p>
-                <p class="map">
-                    <img src="images/VaultBoy.png" width="50px" height="73px" frameborder="0" style="border:0" allowfullscreen="">
-                </p>
+                <div class="header">Page COMING SOON! Please stand by...</div>
+                <div class="boy_thumb"></div>
             </div>
 
             <div class="screen" data-screen="3">
-<!--                        <p class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9564.440201391753!2d-4.0706345!3d53.1800057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39a1973ef2f59%3A0x2b14a49773617857!2sVault+111!5e0!3m2!1sen!2suk!4v1511631062944" width="200" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe></p>-->
+                <div class="header">Page COMING SOON! Please stand by...</div>
+                <div class="boy_thumb"></div>
             </div>
 
             <div class="screen" data-screen="4">
-                some data here
+                <div id="map"></div>
+<!--                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9564.440201391753!2d-4.0706345!3d53.1800057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39a1973ef2f59%3A0x2b14a49773617857!2sVault+111!5e0!3m2!1sen!2suk!4v1511631062944" width="100%" height="400" frameborder="0" allowfullscreen=""></iframe>-->
             </div>
 
             <div class="screen radio" data-screen="5">
@@ -152,6 +157,7 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap" async defer></script>
 <script src="js/main.min.js?t=<?=time();?>"></script>
 </body>
 </html>
