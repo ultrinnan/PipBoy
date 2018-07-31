@@ -59,8 +59,36 @@
             </div>
 
             <div class="screen" data-screen="0">
-                <div class="header">Page COMING SOON! Please stand by...</div>
-                <div class="boy_thumb"></div>
+                <div class="header">Setup Page COMING SOON! Please stand by...</div>
+                <div>
+                    <h2>Pip-Boy 3018</h2>
+                    <p>Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).</p>
+                    <p>Designed for 5 inch touch screen (800 x 480 px).</p>
+                    <p>Initially idea is to have Pip-Boy software on Raspberry Pi with some general information available in original game (Fallout 3/4/etc.).</p>
+                    MVP functionality should consist of:
+                    <ul>
+                        <li>
+                            initial loading screen with video (emulate pip-boy loading)
+                        </li>
+                        <li>
+                            original tabs with static general info about common character
+                        </li>
+                        <li>
+                            fallout styled google map
+                        </li>
+                        <li>
+                            Radio tab with possibility to play music
+                        </li>
+                        <li>
+                            etc.
+                        </li>
+                    </ul>
+                    <p>Source code on github - https://github.com/ultrinnan/PipBoy</p>
+                    <p>You can request additional functionality via small donation :)</p>
+                    <p>Feel free to use and modify it :)</p>
+                    <hr>
+                    <p>Created by Serhii Fedirko (https://fedirko.pro)</p>
+                </div>
             </div>
 
             <div class="screen active" data-screen="1">
@@ -108,8 +136,9 @@
             </div>
 
             <div class="screen" data-screen="4">
-                <div id="map"></div>
-<!--                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9564.440201391753!2d-4.0706345!3d53.1800057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e39a1973ef2f59%3A0x2b14a49773617857!2sVault+111!5e0!3m2!1sen!2suk!4v1511631062944" width="100%" height="400" frameborder="0" allowfullscreen=""></iframe>-->
+                <div id="map">
+                    Please check your internet connection to use map!
+                </div>
             </div>
 
             <div class="screen radio" data-screen="5">
@@ -157,7 +186,7 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=***&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfDK6QXFdhV1zyclw9zopL-_uFv_syObI&callback=initMap" async defer></script>
 <script src="js/main.min.js?t=<?=time();?>"></script>
 </body>
 </html>
