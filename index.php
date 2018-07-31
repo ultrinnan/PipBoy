@@ -30,7 +30,7 @@
     </div>
 
     <div class="main">
-        <video poster="/images/standby.jpg" autoplay id="video">
+        <video poster="/images/standby.jpg" autoplay muted id="video">
             <source src="/startup.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
