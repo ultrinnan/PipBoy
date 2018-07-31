@@ -4,6 +4,8 @@
 
 Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).
 
+Supports only modern browsers (focused on raspberry's chromium).
+
 Live demo here - http://pipboy.fedirko.pro
 
 Designed for 5 inch touch screen (800 x 480 px).
