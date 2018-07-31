@@ -17,7 +17,7 @@
     <meta property='og:title' content='Pip-Boy 3018' />
     <meta property='og:description' content='Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).' />
     <meta property='og:type' content='article' />
-    <meta property='og:image' content='/images/VaultBoy.png' />
+    <meta property='og:image' content='/reference2.jpg' />
     <link rel="icon" href="/images/gear.png" type="image/x-icon" />
 
     <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css"/>
