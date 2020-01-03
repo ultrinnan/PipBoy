@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-    <meta http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <meta name="author" content="Serhii Fedirko">
@@ -21,7 +18,7 @@
     <link rel="icon" href="/images/gear.png" type="image/x-icon" />
 
     <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.min.css?t=<?=time();?>"/>
+    <link rel="stylesheet" type="text/css" href="css/main.min.css"/>
 </head>
 <body>
     <div class="note">
@@ -187,6 +184,6 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfDK6QXFdhV1zyclw9zopL-_uFv_syObI&callback=initMap" async defer></script>
-<script src="js/main.min.js?t=<?=time();?>"></script>
+<script src="js/main.min.js"></script>
 </body>
 </html>

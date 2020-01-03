@@ -1,8 +1,8 @@
-var playlist = [];
-var current_wave = '';
-var current_track = '';
-var audio_player = document.getElementById('audio_player');
-var src = document.getElementById('src');
+let playlist = [];
+let current_wave = '';
+let current_track = '';
+let audio_player = document.getElementById('audio_player');
+let src = document.getElementById('src');
 
 function initMap() {
     // Styles a map in night mode.

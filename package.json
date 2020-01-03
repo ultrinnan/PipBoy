@@ -1,37 +1,31 @@
 {
-  "name": "Pip_Boy_3018",
-  "description": "Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).",
+  "name": "pipboy",
   "version": "1.0.0",
+  "description": "![fallout_pipboy_screen](http://pipboy.fedirko.pro/reference_live.gif)",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-cli": "^2.2.0"
+  },
+  "devDependencies": {
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ultrinnan/PipBoy.git"
+    "url": "git+https://github.com/ultrinnan/PipBoy.git"
   },
-  "keywords": [
-    "fedirko.pro",
-    "pipboy",
-    "pip-boy",
-    "fallout"
-  ],
-  "author": "Serhii Fedirko",
-  "license": "GPL-3.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ultrinnan/fedirko.pro/issues"
+    "url": "https://github.com/ultrinnan/PipBoy/issues"
   },
-  "homepage": "pipboy.fedirko.pro",
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.2.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-ruby-sass": "^3.0.0",
-    "minimatch": "^3.0.4"
-  },
-  "devDependencies": {
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-uglify": "^3.0.2"
-  }
+  "homepage": "https://github.com/ultrinnan/PipBoy#readme"
 }
