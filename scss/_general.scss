@@ -42,7 +42,6 @@ a{
   }
 
   .content {
-    display: none;
     position: relative;
 
     .screen-reflection {
@@ -209,19 +208,28 @@ a{
       z-index: 1;
       top: 8px;
     }
-    .mCSB_inside>.mCSB_container{
-      margin-right: 16px;
-    }
-    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
-      background: green;
-    }
     .music_list{
       position: relative;
       border: 1px solid green;
       margin: 0 8px 0 0;
       padding: 8px 0 4px 4px;
       height: 250px;
-      overflow: hidden;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+      scrollbar-color: $thumbBG $scrollbarBG;
+
+      &::-webkit-scrollbar {
+        width: 11px;
+      }
+      &::-webkit-scrollbar-track {
+        background: $scrollbarBG;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $thumbBG ;
+        border-radius: 6px;
+        border: 3px solid $scrollbarBG;
+      }
+
       .track{
         list-style: none;
         opacity: 0.75;
@@ -417,12 +425,11 @@ a{
   display: flex;
   justify-content: center;
 
-  span {
+  div {
     height: 48px;
     display: block;
     margin: 0 2px;
     font-size: 16px;
-    color: $light_green;
     text-align: center;
     position: relative;
     &:after{
@@ -434,10 +441,15 @@ a{
       top: 0;
       background: rgba(0, 255, 0, 0.2);
     }
-    p {
+    .number {
+      display: block;
       margin: 26px auto 0;
     }
 
+  }
+
+  div {
+    color: $light_green;
   }
 
   .weapon, .helmet {
@@ -458,27 +470,23 @@ a{
   }
   .aim {
     margin-right: 16px;
-    background: url('/images/pipboy-aim2.png') no-repeat;
     background-size: 16px 16px;
-    background-position: 5px 5px;
+    background: url('/images/pipboy-aim2.png') no-repeat 5px 5px;
   }
 
   .shield {
-    background: url('/images/pipboy-shield2.png') no-repeat;
     background-size: 16px 16px;
-    background-position: 5px 5px;
+    background: url('/images/pipboy-shield2.png') no-repeat 5px 5px;
   }
 
   .voltage {
-    background: url('/images/pipboy-voltage2.png') no-repeat;
     background-size: 16px 16px;
-    background-position: 5px 5px;
+    background: url('/images/pipboy-voltage2.png') no-repeat 5px 5px;
   }
 
   .nuclear {
-    background: url('/images/pipboy-nuclear2.png') no-repeat;
     background-size: 16px 16px;
-    background-position: 5px 5px;
+    background: url('/images/pipboy-nuclear2.png') no-repeat 5px 5px;
   }
 
 }

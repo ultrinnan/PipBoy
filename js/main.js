@@ -412,7 +412,6 @@ function getplaylist(){
             }
 
             $('.music_list .wrapper').html(list);
-            $('.music_list').mCustomScrollbar("update");
 
             audio_player.load(); //call this to just preload the audio without playing
             play_wave(); //call this to play the song right away
@@ -432,7 +431,7 @@ function play_wave() {
     $('.play').addClass('active');
     $('.wave.current').addClass('active');
 
-    $('.music_list').mCustomScrollbar("scrollTo", $('.track.current'));
+    // $('.music_list').mCustomScrollbar("scrollTo", $('.track.current')); fixme: fix scrolling to current track!
 }
 function pause_wave() {
     if (audio_player.paused) {
@@ -479,89 +478,80 @@ function setVolume(volume) {
     audio_player.volume = volume;
 }
 
-$(document).ready(function(){
+playVideo();
 
-    playVideo();
+const prev = $('.prev');
+const play = $('.play');
+const next = $('.next');
+const mute = $('.mute');
+const repeat = $('.repeat');
 
-    $(".music_list").mCustomScrollbar();
+$('.play, .pause').click(function() {
+    if (audio_player.paused) {
+        audio_player.play();
+    } else {
+        audio_player.pause();
+    }
+    playToggler();
+});
 
-    var prev = $('.prev');
-    var play = $('.play');
-    var next = $('.next');
-    var mute = $('.mute');
-    var repeat = $('.repeat');
+mute.click(function () {
+    $(this).toggleClass('muted');
+    if ($(this).hasClass('muted')){
+        audio_player.muted = true;
+    } else {
+        audio_player.muted = false;
+    }
+});
 
-    // var song = new Audio(playlist[0]); //with fallback
-    // var duration = song.duration;
+$('.repeat, .shuffle').click(function () {
+    $(this).toggleClass('off');
+});
 
-    $('.play, .pause').click(function() {
-        if (audio_player.paused) {
-            audio_player.play();
+prev.click(function () {
+    var prev_track;
+    if ($('.shuffle').hasClass('off')){
+        if ((current_track) === 0){
+            prev_track = playlist.length - 1;
         } else {
-            audio_player.pause();
+            prev_track = current_track - 1;
         }
-        playToggler();
-    });
+    } else {
+        prev_track = getRandomInt(playlist.length);
+    }
 
-    mute.click(function () {
-        $(this).toggleClass('muted');
-        if ($(this).hasClass('muted')){
-            audio_player.muted = true;
-        } else {
-            audio_player.muted = false;
-        }
-    });
+    src.src = playlist[prev_track].path;
 
-    $('.repeat, .shuffle').click(function () {
-        $(this).toggleClass('off');
-    });
+    $('.player').attr('data-track', prev_track);
+    current_track = prev_track;
 
-    prev.click(function () {
-        var prev_track;
-        if ($('.shuffle').hasClass('off')){
-            if ((current_track) === 0){
-                prev_track = playlist.length - 1;
-            } else {
-                prev_track = current_track - 1;
-            }
-        } else {
-            prev_track = getRandomInt(playlist.length);
-        }
+    $('.track').removeClass('current');
+    $('.track:eq('+current_track+')').addClass('current');
 
-        src.src = playlist[prev_track].path;
+    audio_player.load(); //call this to just preload the audio without playing
+    play_wave(); //call this to play the song right away
+});
 
-        $('.player').attr('data-track', prev_track);
-        current_track = prev_track;
+next.click(function () {
+    play_next();
+});
 
-        $('.track').removeClass('current');
-        $('.track:eq('+current_track+')').addClass('current');
-
-        audio_player.load(); //call this to just preload the audio without playing
-        play_wave(); //call this to play the song right away
-    });
-
-    next.click(function () {
-        play_next();
-    });
-
-    $('.nav_el').click(function () {
-        $('.nav_el, .screen').removeClass('active');
-        $(this).addClass('active');
-        var current_screen_id = $(this).attr('data-nav');
-        var current_screen = $('*[data-screen="'+current_screen_id+'"]');
-        current_screen.addClass('active');
-        if (current_screen.hasClass('radio') && !play.hasClass('active')){
-            getplaylist();
-        }
-    });
-
-    $('.wave').click(function () {
-        $('.wave').removeClass('current active');
-        $(this).addClass('current');
-        var current_radio_id = $(this).attr('data-wave');
-        // pause_wave();
+$('.nav_el').click(function () {
+    $('.nav_el, .screen').removeClass('active');
+    $(this).addClass('active');
+    var current_screen_id = $(this).attr('data-nav');
+    var current_screen = $('*[data-screen="'+current_screen_id+'"]');
+    current_screen.addClass('active');
+    if (current_screen.hasClass('radio') && !play.hasClass('active')){
         getplaylist();
-        // play_wave();
-    });
+    }
+});
 
+$('.wave').click(function () {
+    $('.wave').removeClass('current active');
+    $(this).addClass('current');
+    var current_radio_id = $(this).attr('data-wave');
+    // pause_wave();
+    getplaylist();
+    // play_wave();
 });

@@ -17,7 +17,6 @@
     <meta property='og:image' content='/reference2.jpg' />
     <link rel="icon" href="/images/gear.png" type="image/x-icon" />
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.min.css"/>
 </head>
 <body>
@@ -31,7 +30,7 @@
             <source src="/startup.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
-        <div class="content" style="display: block">
+        <div class="content">
             <div class="screen-reflection"></div>
             <div class="scan"></div>
             <div class="nav">
@@ -71,7 +70,7 @@
                             original tabs with static general info about common character
                         </li>
                         <li>
-                            fallout styled google map
+                            fallout styled google map (available on <a href="http://pipboy.fedirko.pro">http://pipboy.fedirko.pro</a>
                         </li>
                         <li>
                             Radio tab with possibility to play music
@@ -84,14 +83,13 @@
                     <p>You can request additional functionality via small donation :)</p>
                     <p>Feel free to use and modify it :)</p>
                     <hr>
-                    <p>Created by Serhii Fedirko (https://fedirko.pro)</p>
+                    <p>Created by Serhii Fedirko (<a href="https://fedirko.pro">https://fedirko.pro</a>)</p>
                 </div>
             </div>
 
             <div class="screen active" data-screen="1">
                 <div class="stat_nav">
                     <span class="stat active">Status</span>
-<!--                    <span class="stat">Special</span>-->
                 </div>
                 <div class="stat">
                     <div class="vaultboy">
@@ -103,12 +101,12 @@
                         <div class="bar6"></div>
                     </div>
                     <div class="info-bar">
-                        <span class="weapon"></span>
-                        <span class="aim"><p>13</p></span>
-                        <span class="helmet"></span>
-                        <span class="shield"><p>16</p></span>
-                        <span class="voltage"><p>7</p></span>
-                        <span class="nuclear"><p>15</p></span>
+                        <div class="weapon"></div>
+                        <div class="aim"><span class="number">13</span></div>
+                        <div class="helmet"></div>
+                        <div class="shield"><span class="number">16</span></div>
+                        <div class="voltage"><span class="number">7</span></div>
+                        <div class="nuclear"><span class="number">15</span></div>
                     </div>
                     <div class="supplies">
                         <span>Stimpak (0)</span>
@@ -145,7 +143,7 @@
                     <div class="wave" data-wave="3">Fallout 4 Radio</div>
                     <div class="wave" data-wave="4">My Music</div>
                     <div class="list_title">Playlist</div>
-                    <div class="music_list">
+                    <div class="music_list" id="#style-15">
                         <div class="wrapper"></div>
                     </div>
                 </div>
@@ -160,7 +158,9 @@
                     <div class="controlls">
                         <div class="controll mute"></div>
                         <div class="volume">
-                            <input type="range" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+                            <label for="rngVolume">
+                                <input type="range" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
+                            </label>
                         </div>
 
                     </div>
@@ -172,7 +172,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -182,7 +181,6 @@
     </footer>
 
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfDK6QXFdhV1zyclw9zopL-_uFv_syObI&callback=initMap" async defer></script>
 <script src="js/main.min.js"></script>
 </body>
