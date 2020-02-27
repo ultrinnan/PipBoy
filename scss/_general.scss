@@ -242,7 +242,7 @@ a{
 
     }
   }
-  #audio_player{
+  #audioPlayer{
     display: none;
   }
   .player{
@@ -250,13 +250,13 @@ a{
     height: 100%;
     float: left;
     background: url("/images/radiowaves.gif") right bottom no-repeat;
-    .controlls{
+    .controls{
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin: 24px auto;
     }
-    .controll{
+    .control{
       width: 50px;
       height: 50px;
       cursor: pointer;
@@ -383,23 +383,14 @@ a{
   .ap {
     display: block;
     font-size: 16px;
-    padding: 6px 16px 4px;
+    padding: 6px 8px 4px;
     background: rgba(0, 255, 0, 0.2);
     min-width: 130px;
-  }
-
-  .hp {
-    &:before {
-      content: "HP 135/135";
-    }
   }
 
   .exp {
     margin: 0 8px;
     width: 100%;
-    &:before {
-      content: "Level 6";
-    }
     &:after {
       content: "";
       display: inline-block;
@@ -412,9 +403,6 @@ a{
 
   .ap {
     text-align: right;
-    &:before {
-      content: "AP 90/90";
-    }
   }
 }
 
@@ -470,23 +458,23 @@ a{
   }
   .aim {
     margin-right: 16px;
-    background-size: 16px 16px;
     background: url('/images/pipboy-aim2.png') no-repeat 5px 5px;
+    background-size: 16px 16px;
   }
 
   .shield {
-    background-size: 16px 16px;
     background: url('/images/pipboy-shield2.png') no-repeat 5px 5px;
+    background-size: 16px 16px;
   }
 
   .voltage {
-    background-size: 16px 16px;
     background: url('/images/pipboy-voltage2.png') no-repeat 5px 5px;
+    background-size: 16px 16px;
   }
 
   .nuclear {
-    background-size: 16px 16px;
     background: url('/images/pipboy-nuclear2.png') no-repeat 5px 5px;
+    background-size: 16px 16px;
   }
 
 }

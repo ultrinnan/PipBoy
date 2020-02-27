@@ -1,14 +1,12 @@
 <?php
 
-$music_path = 'music/fallout3_station';
+$music_path = 'music/fallout3_station'; //fallback
 
+$_POST = json_decode(file_get_contents('php://input'), true);
 if ($_POST && $_POST['wave']){
     switch ($_POST['wave']){
         case '1':
             $music_path = 'music/noise';
-            break;
-        case '2':
-            $music_path = 'music/fallout3_station';
             break;
         case '3':
             $music_path = 'music/fallout4_station';
@@ -16,7 +14,7 @@ if ($_POST && $_POST['wave']){
         case '4':
             $music_path = 'music/put_your_music_here';
             break;
-        default:
+        default: //same as 2
             $music_path = 'music/fallout3_station';
             break;
     }
@@ -52,6 +50,5 @@ function scan_dir($dir){
 
 $list = scan_dir($music_path);
 
-//var_dump($list);
 echo json_encode($list);
 

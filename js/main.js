@@ -1,12 +1,24 @@
 let playlist = [];
-let current_wave = '';
-let current_track = '';
-let audio_player = document.getElementById('audio_player');
-let src = document.getElementById('src');
+let wave = document.getElementsByClassName('wave');
+let nav_el = document.getElementsByClassName('nav_el');
+let screens = document.getElementsByClassName('screen');
+let currentWave, currentTrack, prevTrack, nextTrack;
+const video = document.getElementById('video');
+const audioPlayer = document.getElementById('audioPlayer');
+const player = document.getElementById('player');
+const playListWrapper = document.getElementById('playList');
+const shuffle = document.getElementById('shuffle');
+const prev = document.getElementById('prev');
+const play = document.getElementById('play');
+const next = document.getElementById('next');
+const repeat = document.getElementById('repeat');
+const mute = document.getElementById('mute');
+
+const src = document.getElementById('src');
 
 function initMap() {
     // Styles a map in night mode.
-    var map = new google.maps.Map(document.getElementById('map'), {
+    const map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 50.4021702, lng: 30.3926088},
         zoom: 10,
         styles: [
@@ -364,194 +376,192 @@ function getRandomInt(max) {
 }
 
 function playVideo(){
-    var video = document.getElementById('video');
     video.play();
     video.addEventListener('ended',function(){
-        $('.main video').hide();
-        $('.main .content').show();
+        video.style.display = 'none';
+        document.getElementById('content').style.display = 'block';
     });
 }
 
-audio_player.addEventListener('ended',function(){
-    if ($('.repeat').hasClass('off')){
-        $('.play').removeClass('active');
-        $('.wave.current').removeClass('active');
+audioPlayer.addEventListener('ended',function(){
+    currentWave = document.getElementsByClassName('wave current');
+    if (repeat.classList.contains('off')){
+        play.classList.remove('active');
+        currentWave.classList.remove('active');
         return;
     }
-    play_next();
+    playNext();
 });
 
-function getplaylist(){
-    var player = $('.player');
-    var wave = $('.wave.current').attr('data-wave');
+prev.addEventListener('click', function () {
+    if (shuffle.classList.contains('off')){
+        if ((currentTrack) === 0){
+            prevTrack = playlist.length - 1;
+        } else {
+            prevTrack = currentTrack - 1;
+        }
+    } else {
+        prevTrack = getRandomInt(playlist.length);
+    }
 
-    var list = '';
-    $.ajax({
-        url: 'get-playlist.php',
-        type: 'POST',
-        data: {wave: wave},
-        dataType: 'json',
-        error: function () {
-            alert('При выполнении запроса произошла ошибка');
-        },
-        success: function( data ) {
+    setActiveTrack(prevTrack);
+});
+
+function setActiveTrack(track) {
+    src.src = playlist[track].path;
+
+    player.setAttribute('data-track', track);
+    currentTrack = track;
+
+    let tracks = document.getElementsByClassName('track');
+    for(let i = 0; i < tracks.length; i++) {
+        tracks[i].classList.remove('current');
+        if (i === currentTrack) {
+            tracks[i].classList.add('current');
+        }
+    }
+    audioPlayer.load(); //call this to just preload the audio without playing
+    playWave(); //call this to play the song right away
+}
+
+play.addEventListener('click', function () {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+    playToggler();
+});
+
+next.addEventListener('click', function () {
+    playNext();
+});
+
+mute.addEventListener('click', function () {
+    mute.classList.toggle('muted');
+    audioPlayer.muted = mute.classList.contains('muted');
+});
+
+repeat.addEventListener('click', function () {
+    repeat.classList.toggle('off')
+});
+
+shuffle.addEventListener('click', function () {
+    shuffle.classList.toggle('off')
+});
+
+for(let i = 0; i < wave.length; i++) {
+    wave[i].addEventListener("click", function() {
+        for(let j = 0; j < wave.length; j++) {
+            wave[j].classList.remove('current','active');
+        }
+        this.classList.add('current');
+        getPlayList();
+    })
+}
+
+for(let i = 0; i < nav_el.length; i++) {
+    nav_el[i].addEventListener('click', function () {
+        for (let j = 0; j < nav_el.length; j++) {
+            nav_el[j].classList.remove('active');
+        }
+        for (let j = 0; j < screens.length; j++) {
+            screens[j].classList.remove('active');
+        }
+        this.classList.add('active');
+        const currentScreenId = this.getAttribute('data-nav');
+        const currentScreen = document.querySelector('*[data-screen="'+currentScreenId+'"]');
+        currentScreen.classList.add('active');
+        if (currentScreen.classList.contains('radio') && !play.classList.contains('active')){
+            getPlayList();
+        }
+    })
+}
+
+function getPlayList(){
+    const wave = document.getElementsByClassName('wave current')[0].getAttribute('data-wave');
+
+    let list = '';
+
+    const url = 'get-playlist.php';
+    const data = {
+        wave: wave,
+    };
+    const options = {
+        method: "POST",
+        body: JSON.stringify(data),
+    };
+
+    fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => {
             playlist = data;
             src.src = playlist[0].path;
 
-            player.attr('data-wave', wave);
-            current_wave = wave;
-            player.attr('data-track', 0);
-            current_track = 0;
+            player.setAttribute('data-wave', wave);
+            currentWave = wave;
+            player.setAttribute('data-track', '0');
+            currentTrack = 0;
 
-            for (var i = 0; i< playlist.length; i++){
+            for (let i = 0; i< playlist.length; i++){
                 if (i === 0){
-                    list += '<div class="track current">' + playlist[i].name + '</div>';
+                    list += `<div class="track current">${playlist[i].name}</div>`;
                 } else {
-                    list += '<div class="track">' + playlist[i].name + '</div>';
+                    list += `<div class="track">${playlist[i].name}</div>`;
                 }
             }
 
-            $('.music_list .wrapper').html(list);
+            playListWrapper.innerHTML = list;
 
-            audio_player.load(); //call this to just preload the audio without playing
-            play_wave(); //call this to play the song right away
-        }
-    });
+            audioPlayer.load(); //call this to just preload the audio without playing
+            playWave(); //call this to play the song right away
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 }
 
 function playToggler(){
-    $('.play').toggleClass('active');
-    $('.wave.current').toggleClass('active');
+    play.classList.toggle('active');
+    document.getElementsByClassName('wave current')[0].classList.toggle('active');
 }
 
-function play_wave() {
-    if (audio_player.paused) {
-        audio_player.play();
+function playWave() {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
     }
-    $('.play').addClass('active');
-    $('.wave.current').addClass('active');
+    play.classList.add('active');
+    document.getElementsByClassName('wave current')[0].classList.add('active');
+    const track = document.getElementsByClassName('track current')[0];
+    document.getElementsByClassName('music_list')[0].scrollTop = track.offsetTop - 8; //small margin
+}
 
-    // $('.music_list').mCustomScrollbar("scrollTo", $('.track.current')); fixme: fix scrolling to current track!
-}
-function pause_wave() {
-    if (audio_player.paused) {
-        return;
-    } else {
-        audio_player.pause();
-    }
-    $('.play').removeClass('active');
-    $('.wave.current').removeClass('active');
-}
-function play_next() {
-    var next_track;
-    if ($('.shuffle').hasClass('off')){
-        if ((current_track + 2) > playlist.length){
-            next_track = 0;
+function playNext() {
+    if (shuffle.classList.contains('off')){
+        if ((currentTrack + 2) > playlist.length){
+            nextTrack = 0;
         } else {
-            next_track = current_track + 1;
+            nextTrack = currentTrack + 1;
         }
     } else {
-        next_track = getRandomInt(playlist.length);
+        nextTrack = getRandomInt(playlist.length);
     }
-    src.src = playlist[next_track].path;
-
-    $('.player').attr('data-track', next_track);
-    current_track = next_track;
-
-    $('.track').removeClass('current');
-    $('.track:eq('+current_track+')').addClass('current');
-
-    audio_player.load(); //call this to just preload the audio without playing
-    play_wave(); //call this to play the song right away
-}
-
-function playPause() {
-    if (audio_player.paused) {
-        audio_player.play();
-    } else {
-        audio_player.pause();
-    }
-    playToggler();
+    setActiveTrack(nextTrack);
 }
 
 function setVolume(volume) {
-    audio_player.volume = volume;
+    audioPlayer.volume = volume;
 }
 
 playVideo();
 
-const prev = $('.prev');
-const play = $('.play');
-const next = $('.next');
-const mute = $('.mute');
-const repeat = $('.repeat');
-
-$('.play, .pause').click(function() {
-    if (audio_player.paused) {
-        audio_player.play();
-    } else {
-        audio_player.pause();
-    }
-    playToggler();
-});
-
-mute.click(function () {
-    $(this).toggleClass('muted');
-    if ($(this).hasClass('muted')){
-        audio_player.muted = true;
-    } else {
-        audio_player.muted = false;
-    }
-});
-
-$('.repeat, .shuffle').click(function () {
-    $(this).toggleClass('off');
-});
-
-prev.click(function () {
-    var prev_track;
-    if ($('.shuffle').hasClass('off')){
-        if ((current_track) === 0){
-            prev_track = playlist.length - 1;
-        } else {
-            prev_track = current_track - 1;
-        }
-    } else {
-        prev_track = getRandomInt(playlist.length);
-    }
-
-    src.src = playlist[prev_track].path;
-
-    $('.player').attr('data-track', prev_track);
-    current_track = prev_track;
-
-    $('.track').removeClass('current');
-    $('.track:eq('+current_track+')').addClass('current');
-
-    audio_player.load(); //call this to just preload the audio without playing
-    play_wave(); //call this to play the song right away
-});
-
-next.click(function () {
-    play_next();
-});
-
-$('.nav_el').click(function () {
-    $('.nav_el, .screen').removeClass('active');
-    $(this).addClass('active');
-    var current_screen_id = $(this).attr('data-nav');
-    var current_screen = $('*[data-screen="'+current_screen_id+'"]');
-    current_screen.addClass('active');
-    if (current_screen.hasClass('radio') && !play.hasClass('active')){
-        getplaylist();
-    }
-});
-
-$('.wave').click(function () {
-    $('.wave').removeClass('current active');
-    $(this).addClass('current');
-    var current_radio_id = $(this).attr('data-wave');
-    // pause_wave();
-    getplaylist();
-    // play_wave();
-});
+if (window.location.href.indexOf("local") > -1) {
+    //local site, no need in map
+    document.getElementById('map_menu').style.display = 'none';
+} else {
+    let script = document.createElement("script");
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAfDK6QXFdhV1zyclw9zopL-_uFv_syObI&callback=initMap";
+    script.setAttribute('async', 'true');
+    script.setAttribute('defer', 'true');
+    document.getElementsByTagName("body")[0].appendChild(script);
+}

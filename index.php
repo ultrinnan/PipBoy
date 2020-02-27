@@ -26,11 +26,11 @@
     </div>
 
     <div class="main">
-        <video poster="/images/standby.jpg" autoplay muted id="video">
-            <source src="/startup.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        <div class="content">
+<!--        <video poster="/images/standby.jpg" autoplay muted id="video">-->
+<!--            <source src="/startup.mp4" type="video/mp4">-->
+<!--            Your browser does not support HTML5 video.-->
+<!--        </video>-->
+        <div class="content" id="content">
             <div class="screen-reflection"></div>
             <div class="scan"></div>
             <div class="nav">
@@ -46,7 +46,7 @@
                 <div class="nav_el" data-nav="3">
                     <div class="text">DATA</div>
                 </div>
-                <div class="nav_el" data-nav="4">
+                <div class="nav_el" data-nav="4" id="map_menu">
                     <div class="text">MAP</div>
                 </div>
                 <div class="nav_el" data-nav="5">
@@ -113,9 +113,9 @@
                         <span>Radaway (0)</span>
                     </div>
                     <div class="hud-bar">
-                        <div class="hp"></div>
-                        <div class="exp"></div>
-                        <div class="ap"></div>
+                        <div class="hp">HP 135/135</div>
+                        <div class="exp">Level 6</div>
+                        <div class="ap">AP 90/90</div>
                     </div>
                 </div>
             </div>
@@ -144,19 +144,19 @@
                     <div class="wave" data-wave="4">My Music</div>
                     <div class="list_title">Playlist</div>
                     <div class="music_list" id="#style-15">
-                        <div class="wrapper"></div>
+                        <div class="wrapper" id="playList"></div>
                     </div>
                 </div>
-                <div class="player" data-wave="2" data-track="0">
-                    <div class="controlls">
-                        <div class="controll shuffle"></div>
-                        <div class="controll prev"></div>
-                        <div class="controll play"></div>
-                        <div class="controll next"></div>
-                        <div class="controll repeat"></div>
+                <div class="player" id="player" data-wave="2" data-track="0">
+                    <div class="controls">
+                        <div class="control shuffle" id="shuffle"></div>
+                        <div class="control prev" id="prev"></div>
+                        <div class="control play" id="play"></div>
+                        <div class="control next" id="next"></div>
+                        <div class="control repeat" id="repeat"></div>
                     </div>
-                    <div class="controlls">
-                        <div class="controll mute"></div>
+                    <div class="controls">
+                        <div class="control mute" id="mute"></div>
                         <div class="volume">
                             <label for="rngVolume">
                                 <input type="range" onchange="setVolume(this.value)" id="rngVolume" min="0" max="1" step="0.01" value="1">
@@ -165,7 +165,7 @@
 
                     </div>
                     <div class="container">
-                        <audio controls id="audio_player">
+                        <audio controls id="audioPlayer">
                             <source id="src" src="music/fallout3_station/!world-on-fire.mp3" type="audio/mpeg">
                             Your browser does not support the audio element.
                         </audio>
@@ -179,9 +179,6 @@
         Copyright &copy; <?=date('Y');?>. FEDIRKO.PRO and Bethesda Game Studios
         <a target="_blank" class="footer_author" href="//fedirko.pro" title="created by FEDIRKO.PRO"></a>
     </footer>
-
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfDK6QXFdhV1zyclw9zopL-_uFv_syObI&callback=initMap" async defer></script>
 <script src="js/main.min.js"></script>
 </body>
 </html>
