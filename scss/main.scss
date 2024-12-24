@@ -1,9 +1,9 @@
 // Helpers
-@import "helpers/variables";
-@import "helpers/fonts";
-@import "helpers/normalize";
+@use "./helpers/variables";
+@use "./helpers/fonts";
+@use "./helpers/normalize";
 
-@import "components/inputrange";
+@use "./components/inputrange";
 
 // Base styles
-@import "general";
+@use "./general";

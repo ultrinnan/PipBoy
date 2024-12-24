@@ -1,3 +1,5 @@
+@use "./helpers/variables" as vars;
+
 html {
   height: 100%;
 }
@@ -73,7 +75,7 @@ a{
       width: 600px;
       top: 0;
       left: 100px;
-      border-bottom: 2px solid $light_green;
+      border-bottom: 2px solid vars.$light_green;
       z-index: 10;
       padding: 24px 0 0;
       display: flex;
@@ -87,7 +89,7 @@ a{
         content: '';
         width: 2px;
         height: 24px;
-        background: linear-gradient($light_green, transparent);
+        background: linear-gradient(vars.$light_green, transparent);
       }
       &:after{
         left: auto;
@@ -97,7 +99,7 @@ a{
       .nav_el {
         border: 2px solid transparent;
         cursor: pointer;
-        color: $light_green;
+        color: vars.$light_green;
         font-size: 16pt;
         margin: 0 16px;
         height: 16px;
@@ -105,7 +107,7 @@ a{
         bottom: -2px;
         padding: 0 4px;
         &.active {
-          border: 2px solid $light_green;
+          border: 2px solid vars.$light_green;
           border-bottom: 2px solid #000;
         }
 
@@ -189,7 +191,7 @@ a{
       }
       &.current{
         opacity: 1;
-        color: $light_green;
+        color: vars.$light_green;
       }
       &.active{
         &:before{
@@ -216,18 +218,18 @@ a{
       height: 250px;
       overflow-y: scroll;
       scrollbar-width: thin;
-      scrollbar-color: $thumbBG $scrollbarBG;
+      scrollbar-color: vars.$thumbBG vars.$scrollbarBG;
 
       &::-webkit-scrollbar {
         width: 11px;
       }
       &::-webkit-scrollbar-track {
-        background: $scrollbarBG;
+        background: vars.$scrollbarBG;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: $thumbBG ;
+        background-color: vars.$thumbBG ;
         border-radius: 6px;
-        border: 3px solid $scrollbarBG;
+        border: 3px solid vars.$scrollbarBG;
       }
 
       .track{
@@ -236,7 +238,7 @@ a{
         margin-bottom: 4px;
         &.current{
           opacity: 1;
-          color: $light_green;
+          color: vars.$light_green;
         }
       }
 
@@ -323,7 +325,7 @@ a{
   .bar6 {
     width: 32px;
     height: 8px;
-    background: $light_green;
+    background: vars.$light_green;
     position: absolute;
   }
 
@@ -365,7 +367,7 @@ a{
   span {
     display: block;
     margin: 0 8px 0 0;
-    background: $light_green;
+    background: vars.$light_green;
     font-size: 16px;
     padding: 6px 8px 4px;
     color: #000;
@@ -375,7 +377,7 @@ a{
 .hud-bar {
   position: relative;
   margin: 8px auto 0;
-  color: $light_green;
+  color: vars.$light_green;
   display: flex;
 
   .hp,
@@ -396,7 +398,7 @@ a{
       display: inline-block;
       width: 120px;
       height: 8px;
-      border: 2px solid $light_green;
+      border: 2px solid vars.$light_green;
       margin-left: 8px;
     }
   }
@@ -437,7 +439,7 @@ a{
   }
 
   div {
-    color: $light_green;
+    color: vars.$light_green;
   }
 
   .weapon, .helmet {

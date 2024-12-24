@@ -11,3 +11,26 @@ $light_green: rgba(51, 255, 0, 0.8);
 
 //Transition
 $default-transition: 0.5s ease-in-out;
+
+$track-color: black !default;
+$thumb-color: black !default;
+
+$thumb-radius: 12px !default;
+$thumb-height: 24px !default;
+$thumb-width: 24px !default;
+$thumb-shadow-size: 4px !default;
+$thumb-shadow-blur: 4px !default;
+$thumb-shadow-color: rgba(0, 0, 0, .2) !default;
+$thumb-border-width: 2px !default;
+$thumb-border-color: $light_green !default;
+
+$track-width: 100% !default;
+$track-height: 8px !default;
+$track-shadow-size: 1px !default;
+$track-shadow-blur: 1px !default;
+$track-shadow-color: rgba(0, 0, 0, .2) !default;
+$track-border-width: 2px !default;
+$track-border-color: $light_green !default;
+
+$track-radius: 0 !default;
+$contrast: 5% !default;
