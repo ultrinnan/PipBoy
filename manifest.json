@@ -1,0 +1,21 @@
+
+{
+  "name": "Pip-Boy 3018",
+  "short_name": "Pip-Boy",
+  "description": "Your personal Pip-Boy for your Raspberry Pi with touchscreen (or any OS/web).",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "images/gear.png",
+    "48": "images/gear.png",
+    "128": "images/gear.png"
+  },
+  "start_url": "/index.php",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00FF00",
+  "orientation": "landscape",
+  "permissions": [
+    "geolocation"
+  ]
+}

@@ -33,7 +33,7 @@ function scan_dir($dir){
 
     foreach ($files as $file){
         $info = pathinfo($file);
-        if ($info['extension'] === 'mp3') {
+        if (isset($info['extension']) && $info['extension'] === 'mp3') {
             $result[] = [
                 'name' => beautify_name($file),
                 'path' => $dir . '/' .  $file,
