@@ -1,7 +1,6 @@
 const CACHE_NAME = "pipboy-v1";
 const ASSETS_TO_CACHE = ["/", "/index.php", "/get-playlist.php"];
 
-// 动态缓存匹配特定模式的文件
 const CACHE_PATTERNS = [
   /\.css$/,
   /\.js$/,
